@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Arrow : XRGrabInteractable {
+public class Arrow : XRGrabInteractable
+{
     [Header("Settings")]
     public float speed = 2000.0f;
 
@@ -15,14 +16,16 @@ public class Arrow : XRGrabInteractable {
     private Vector3 lastPosition = Vector3.zero;
     private bool launched = false;
 
-    protected override void Awake() {
+    protected override void Awake()
+    {
         base.Awake();
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         gameObject.name = "arrow_" + Random.Range(0, 50000).ToString();
     }
 
-    protected override void OnSelectEntering(SelectEnterEventArgs args) {
+    protected override void OnSelectEntering(SelectEnterEventArgs args)
+    {
         // Do this first, so we get the right physics values
         if (args.interactableObject is XRGrabInteractable)
             Clear();
@@ -31,12 +34,14 @@ public class Arrow : XRGrabInteractable {
         base.OnSelectEntering(args);
     }
 
-    private void Clear() {
+    private void Clear()
+    {
         SetLaunch(false);
         TogglePhysics(true);
     }
 
-    protected override void OnSelectExited(SelectExitEventArgs args) {
+    protected override void OnSelectExited(SelectExitEventArgs args)
+    {
         // Make sure to do this
         base.OnSelectExited(args);
         // If it's a notch, launch the arrow
@@ -44,39 +49,47 @@ public class Arrow : XRGrabInteractable {
             Launch(notch);
     }
 
-    private void Launch(Notch notch) {
+    private void Launch(Notch notch)
+    {
         // Double-check incase the bow is dropped with arrow socketed
 
-        if (notch.IsReady) {
+        if (notch.IsReady)
+        {
             SetLaunch(true);
             UpdateLastPosition();
             ApplyForce(notch.PullMeasurer);
         }
     }
 
-    private void SetLaunch(bool value) {
+    private void SetLaunch(bool value)
+    {
         collider.isTrigger = value;
         launched = value;
     }
 
-    private void UpdateLastPosition() {
+    private void UpdateLastPosition()
+    {
         // Always use the tip's position
         lastPosition = tip.position;
     }
 
-    private void ApplyForce(PullMeasurer pullMeasurer) {
+    private void ApplyForce(PullMeasurer pullMeasurer)
+    {
         // Apply force to the arrow
         float power = pullMeasurer.PullAmount;
         Vector3 force = transform.forward * (power * speed);
         rigidbody.AddForce(force);
     }
 
-    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase) {
+    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
+    {
         base.ProcessInteractable(updatePhase);
 
-        if (launched) {
+        if (launched)
+        {
             // Check for collision as often as possible
-            if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic) {
+            if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
+            {
                 if (CheckForCollision())
                     launched = false;
 
@@ -89,40 +102,46 @@ public class Arrow : XRGrabInteractable {
         }
     }
 
-    private void SetDirection() {
+    private void SetDirection()
+    {
         // Look in the direction the arrow is moving
         if (rigidbody.velocity.z > 0.5f)
             transform.forward = rigidbody.velocity;
     }
 
-    private bool CheckForCollision() {
+    private bool CheckForCollision()
+    {
         // Check if there was a hit
-        if (Physics.Linecast(lastPosition, tip.position, out RaycastHit hit, layerMask)) {
-           
-            
-                
-                TogglePhysics(false);
-                ChildArrow(hit);
-                CheckForHittable(hit);
-            
+        if (Physics.Linecast(lastPosition, tip.position, out RaycastHit hit, layerMask))
+        {
+
+
+
+            TogglePhysics(false);
+            ChildArrow(hit);
+            CheckForHittable(hit);
+
         }
 
         return hit.collider != null;
     }
 
-    private void TogglePhysics(bool value) {
+    private void TogglePhysics(bool value)
+    {
         // Disable physics for childing and grabbing
         rigidbody.isKinematic = !value;
         rigidbody.useGravity = value;
     }
 
-    private void ChildArrow(RaycastHit hit) {
+    private void ChildArrow(RaycastHit hit)
+    {
         // Child to hit object
         Transform newParent = hit.collider.transform;
         transform.SetParent(newParent);
     }
 
-    private void CheckForHittable(RaycastHit hit) {
+    private void CheckForHittable(RaycastHit hit)
+    {
         // Check if the hit object has a component that uses the hittable interface
         GameObject hitObject = hit.transform.gameObject;
         IArrowHittable hittable = hitObject ? hitObject.GetComponent<IArrowHittable>() : null;

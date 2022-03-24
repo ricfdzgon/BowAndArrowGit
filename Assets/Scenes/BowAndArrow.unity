@@ -195,11 +195,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 23113671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 14810d7ffa9435645a2a792d103612cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 2018581837}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 23113673}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -301,6 +302,11 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!65 &23113673 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5884175300938282712, guid: 60e7d33a2c791694bb65d3d12843d89b, type: 3}
+  m_PrefabInstance: {fileID: 23113670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &23113675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5884175300938282718, guid: 60e7d33a2c791694bb65d3d12843d89b, type: 3}
@@ -569,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2018581837}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1240,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2018581837}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1551,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2018581837}
+  m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
@@ -1695,7 +1701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca42f673e102ca042beec44dbba1a476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2018581837}
+  m_InteractionManager: {fileID: 0}
   m_Colliders:
   - {fileID: 858702735}
   m_InteractionLayerMask:
@@ -1776,7 +1782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9469d0209a87c34994ba1bd9a6d55ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2018581837}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2515,7 +2521,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2018581836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Script: {fileID: 11500000, guid: cb816fa9f750a4c4aae4745d1f23c13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2018581838

@@ -279,7 +279,7 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   speed: 2000
-  tip: {fileID: 0}
+  tip: {fileID: 6683890773290526432}
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967291
