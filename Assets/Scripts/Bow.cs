@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Bow : XRGrabInteractable {
+public class Bow : XRGrabInteractable
+{
 
     private Notch notch = null;
 
-    protected override void Awake() {
+    protected override void Awake()
+    {
         base.Awake();
         notch = GetComponentInChildren<Notch>();
     }
 
-    protected override void OnEnable() {
+    protected override void OnEnable()
+    {
         base.OnEnable();
 
         // Only notch an arrow if the bow is held
@@ -20,7 +23,8 @@ public class Bow : XRGrabInteractable {
         selectExited.AddListener(notch.SetReady);
     }
 
-    protected override void OnDisable() {
+    protected override void OnDisable()
+    {
         base.OnDisable();
         selectEntered.RemoveListener(notch.SetReady);
         selectExited.RemoveListener(notch.SetReady);
