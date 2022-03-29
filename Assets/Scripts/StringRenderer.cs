@@ -28,4 +28,17 @@ public class StringRenderer : MonoBehaviour
         Vector3[] positions = new Vector3[] { top.position, middle.position, bottom.position };
         lineRenderer.SetPositions(positions);
     }
+
+    private void OnDrawGizmos()
+    {
+        // Draw line from start to end point
+        if (top && middle)
+        {
+            Gizmos.DrawLine(top.position, middle.position);
+        }
+        if (bottom && middle)
+        {
+            Gizmos.DrawLine(bottom.position, middle.position);
+        }
+    }
 }
