@@ -96,11 +96,13 @@ public class PullMeasurer : XRBaseInteractable
     public override bool IsSelectableBy(XRBaseInteractor interactor)
     {
         // Only let direct interactors pull the string
+        Debug.Log("PullMeasurer.IsSelectableBy " + IsDirectInteractor(interactor));
         return base.IsSelectableBy(interactor) && IsDirectInteractor(interactor);
     }
 
     private bool IsDirectInteractor(XRBaseInteractor interactor)
     {
+
         return interactor is XRDirectInteractor;
     }
 
