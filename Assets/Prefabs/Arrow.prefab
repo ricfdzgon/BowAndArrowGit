@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3095439400012863930}
   - component: {fileID: 3095439400016255386}
   - component: {fileID: 3095439400015158106}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8592601751234866933}
   - component: {fileID: 3482205034629652260}
   - component: {fileID: 3870412937162747607}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6683890773290526432}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7814524808459454424}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Atach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
