@@ -282,7 +282,7 @@ MonoBehaviour:
   tip: {fileID: 6683890773290526432}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 23
 --- !u!1 &8762331989456193271
 GameObject:
   m_ObjectHideFlags: 0
