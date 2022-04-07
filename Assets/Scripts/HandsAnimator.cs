@@ -13,6 +13,7 @@ public class HandsAnimator : MonoBehaviour
     {
         // Lo primero es una referencia al animator
         animator = GetComponent<Animator>();
+        TryInitialize();
     }
 
     void Update()
@@ -28,7 +29,7 @@ public class HandsAnimator : MonoBehaviour
             //Esta é a instrucción que lee un valor dende un dispositivo
             //o primeiro parámetro é o que indica que valor queremos ler de entre os que poida ter o dispositivo
             //A función *intenta* obter o valor devolve un bool que indica se o conseguiu
-            if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out gripValue))
+            if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue))
             {
                 //Isto execútase se o vakir se leu correctamente
                 animator.SetFloat("Grip", gripValue);
@@ -37,6 +38,7 @@ public class HandsAnimator : MonoBehaviour
             else
             {
                 //Isto executase no caso contrario
+                animator.SetFloat("Grip", 0);
             }
         }
         else
