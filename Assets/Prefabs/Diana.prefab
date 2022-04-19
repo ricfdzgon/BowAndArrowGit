@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 2193194044453315821}
   - component: {fileID: 2193194044453315818}
   - component: {fileID: 2193194044453315819}
+  - component: {fileID: 7146074466939677844}
   m_Layer: 0
   m_Name: Diana
   m_TagString: Untagged
@@ -239,6 +240,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08992983, y: 0.10507369, z: 1.3456577}
   m_Center: {x: 0, y: -0.55, z: -0}
+--- !u!114 &7146074466939677844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2193194044453315817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd21de955cab29469ac4bbb2fce1e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceAmount: 1
+  otherMaterial: {fileID: 0}
 --- !u!1 &2193194045071405413
 GameObject:
   m_ObjectHideFlags: 0

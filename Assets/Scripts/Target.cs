@@ -5,10 +5,8 @@ public class Target : MonoBehaviour, IArrowHittable
     public float forceAmount = 1.0f;
     public Material otherMaterial = null;
 
-    public void Hit(Arrow arrow)
-    {
-        ApplyMaterial();
-        ApplyForce(arrow.transform.forward);
+    public void Hit(Arrow arrow) {
+        
     }
 
     private void ApplyMaterial()

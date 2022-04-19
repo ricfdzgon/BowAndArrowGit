@@ -2,8 +2,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(PullMeasurer))]
-public class Notch : XRSocketInteractor
-{
+public class Notch : XRSocketInteractor {
     // Settings
     [Range(0, 1)] public float releaseThreshold = 0.25f;
 
@@ -14,14 +13,12 @@ public class Notch : XRSocketInteractor
     // Need to cast to custom for Force Deselect
     private CustomInteractionManager CustomManager => interactionManager as CustomInteractionManager;
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         PullMeasurer = GetComponent<PullMeasurer>();
     }
 
-    protected override void OnEnable()
-    {
+    protected override void OnEnable() {
         base.OnEnable();
 
         // Arrow is released once the puller is released
@@ -30,48 +27,41 @@ public class Notch : XRSocketInteractor
         PullMeasurer.Pulled.AddListener(MoveAttach);
     }
 
-    protected override void OnDisable()
-    {
+    protected override void OnDisable() {
         base.OnDisable();
         PullMeasurer.selectExited.RemoveListener(ReleaseArrow);
         PullMeasurer.Pulled.AddListener(MoveAttach);
     }
 
-    public void ReleaseArrow(SelectExitEventArgs args)
-    {
+    public void ReleaseArrow(SelectExitEventArgs args) {
         // Only release if the target is an arrow using custom deselect
         if (selectTarget is Arrow && PullMeasurer.PullAmount > releaseThreshold)
             CustomManager.ForceDeselect(this);
     }
 
-    public void MoveAttach(Vector3 pullPosition, float pullAmount)
-    {
+    public void MoveAttach(Vector3 pullPosition, float pullAmount) {
         // Move attach when bow is pulled, this updates the renderer as well
         attachTransform.position = pullPosition;
     }
 
-    public void SetReady(BaseInteractionEventArgs args)
-    {
+    public void SetReady(BaseInteractionEventArgs args) {
         // Set the notch ready if bow is selected
-
+        
         IsReady = args.interactable.isSelected;
     }
 
-    public override bool CanSelect(XRBaseInteractable interactable)
-    {
+    public override bool CanSelect(XRBaseInteractable interactable) {
         // We check for the hover here too, since it factors in the recycle time of the socket
         // We also check that notch is ready, which is set once the bow is picked up
         return base.CanSelect(interactable) && CanHover(interactable) && IsArrow(interactable);
     }
 
-    private bool IsArrow(XRBaseInteractable interactable)
-    {
+    private bool IsArrow(XRBaseInteractable interactable) {
         // Simple arrow check, can be tag or interaction layer as well
         return interactable is Arrow;
     }
 
-    public override XRBaseInteractable.MovementType? selectedInteractableMovementTypeOverride
-    {
+    public override XRBaseInteractable.MovementType? selectedInteractableMovementTypeOverride {
         // Use instantaneous so it follows smoothly
         get { return XRBaseInteractable.MovementType.Instantaneous; }
     }

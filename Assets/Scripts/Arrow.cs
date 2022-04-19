@@ -52,12 +52,13 @@ public class Arrow : XRGrabInteractable
     private void Launch(Notch notch)
     {
         // Double-check incase the bow is dropped with arrow socketed
-        Debug.Log("Arrow.Launch " + notch.IsReady);
+        //Debug.Log("Arrow.Launch " + notch.IsReady);
         if (notch.IsReady)
         {
             SetLaunch(true);
             UpdateLastPosition();
             ApplyForce(notch.PullMeasurer);
+            GameManager.instance.frechaLanzada(this);
         }
     }
 
@@ -114,9 +115,6 @@ public class Arrow : XRGrabInteractable
         // Check if there was a hit
         if (Physics.Linecast(lastPosition, tip.position, out RaycastHit hit, layerMask))
         {
-
-
-
             TogglePhysics(false);
             ChildArrow(hit);
             CheckForHittable(hit);
