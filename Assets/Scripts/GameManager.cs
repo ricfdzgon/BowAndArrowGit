@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private int numeroFrechasLanzadas;
     private int puntuacionUltimo = 0, puntuacionTotal = 0;
     // Start is called before the first frame update
-
+    private List<Arrow> flechasCreadas = new List<Arrow>();
     void Awake()
     {
         instance = this;
@@ -48,5 +48,17 @@ public class GameManager : MonoBehaviour
         puntuacionTotal = 0;
         marcador.SetNumeroFrechas(numeroFrechasLanzadas);
         marcador.SetPuntuacion(puntuacionUltimo, puntuacionTotal);
+
+        //Destruir las flechas creadas
+        foreach (Arrow arrow in flechasCreadas)
+        {
+            Destroy(arrow.gameObject, 0);
+        }
+        flechasCreadas.Clear();
+    }
+    public void NewArrow(Arrow arrow)
+    {
+        flechasCreadas.Add(arrow);
+        Debug.Log("Flechas creadas totales = " + flechasCreadas.Count);
     }
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class HandAnimator : MonoBehaviour {
+public class HandAnimator : MonoBehaviour
+{
     Animator animator;
 
     private InputDevice targetDevice;
@@ -12,22 +13,25 @@ public class HandAnimator : MonoBehaviour {
     public InputDeviceCharacteristics controllerCharacteristics;
 
     // Start is called before the first frame update
-    void Start()  {
+    void Start()
+    {
         //Lo primero es una referencia al animator
         animator = GetComponent<Animator>();
         TryInitialize();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         Debug.Log("HandAnimator.Update principio ");
         //En update miraremos cual es el valor correspondiente al botón de Grip
         //y lo usaremos para controlar el animador       
 
-        
+
         //Antes de mirar el valor del botón de grip, tengo que mirar si targetDevice fue
         //inicializado correctamente
-        if(targetDevice != null) {
+        if (targetDevice != null)
+        {
             //targetDevice está inicalizado, leemos el valor del mando de grip
 
             //na variable gripValue obteremos o valor
@@ -36,16 +40,21 @@ public class HandAnimator : MonoBehaviour {
             //Esta é a instrución que lé un valor dende un dispositivo
             //o primeiro parámetro é o que indica que valor queremos ler de entre os que poida ter o dispositivo
             //A función *intenta* obter o valor e devolve un bool que indica se o conseguiu
-            if(targetDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue)) {
+            if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue))
+            {
                 //Isto execútase se o valor se leu correctamente. Usamos gripValue no animador
                 animator.SetFloat("Grip", gripValue);
-            } else {
+            }
+            else
+            {
                 //Isto execútase no caso contrario
                 animator.SetFloat("Grip", 0);
             }
             //Debug.Log("HandAnimator.Update " + gripValue);
-           
-        } else {
+
+        }
+        else
+        {
             //targetDevice no está inicializado, lo intentamos de nuevo
             TryInitialize();
         }
@@ -55,9 +64,10 @@ public class HandAnimator : MonoBehaviour {
         //animator.SetFloat("Grip", pingpong);        
     }
 
-    private void TryInitialize() {
+    private void TryInitialize()
+    {
 
-Debug.Log("TryInitialize inicio");
+        Debug.Log("TryInitialize inicio");
         //Neste método intentaremos conectar co mando esquerdo,
         //usando a variable controllerCharacteristics
 
@@ -68,12 +78,15 @@ Debug.Log("TryInitialize inicio");
         InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
 
         //Miramos se en devices, a nosa variable, hai algún dispositivo atopado
-        if(devices.Count > 0) {
+        if (devices.Count > 0)
+        {
             //Tirando millas, vou supoñer que o dispositivo que nos interesa é o primeiro da lista
             //o cal é bastante lóxico porque non debería haber máis dun mando esquerdo
             targetDevice = devices[0];
             Debug.Log("TryInitialize dispositivo atopado");
-        } else {
+        }
+        else
+        {
             //Para ver que se tarda un pouco en atopar o mando, poñemos un Debug.Log
             Debug.Log("TryInitialize dispositivo non atopado");
         }
