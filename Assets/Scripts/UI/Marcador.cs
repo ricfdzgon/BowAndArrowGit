@@ -43,4 +43,9 @@ public class Marcador : MonoBehaviour
         numeroPuntosTotales.text = pointsTotales.ToString();
     }
 
+    public void ButtonReiniciarOnClick()
+    {
+        GameManager.instance.Reiniciar();
+    }
+
 }

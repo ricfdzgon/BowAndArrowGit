@@ -40,4 +40,13 @@ public class GameManager : MonoBehaviour
         puntuacionTotal += puntuacionUltimo;
         marcador.SetPuntuacion(puntuacionUltimo, puntuacionTotal);
     }
+
+    public void Reiniciar()
+    {
+        numeroFrechasLanzadas = 0;
+        puntuacionUltimo = 0;
+        puntuacionTotal = 0;
+        marcador.SetNumeroFrechas(numeroFrechasLanzadas);
+        marcador.SetPuntuacion(puntuacionUltimo, puntuacionTotal);
+    }
 }
