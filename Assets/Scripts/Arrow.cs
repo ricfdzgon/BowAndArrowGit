@@ -53,7 +53,7 @@ public class Arrow : XRGrabInteractable
     {
         // Double-check incase the bow is dropped with arrow socketed
         //Debug.Log("Arrow.Launch " + notch.IsReady);
-        if (notch.IsReady)
+        if (notch.IsReady && GameManager.instance.PuedeSeguirJugando())
         {
             SetLaunch(true);
             UpdateLastPosition();

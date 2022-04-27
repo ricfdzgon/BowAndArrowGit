@@ -61,4 +61,8 @@ public class GameManager : MonoBehaviour
         flechasCreadas.Add(arrow);
         Debug.Log("Flechas creadas totales = " + flechasCreadas.Count);
     }
+    public bool PuedeSeguirJugando()
+    {
+        return numeroFrechasLanzadas < 10;
+    }
 }

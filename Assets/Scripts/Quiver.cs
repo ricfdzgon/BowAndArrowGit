@@ -28,10 +28,13 @@ public class Quiver : XRBaseInteractable
 
     public void CreateAndSelectArrow(SelectEnterEventArgs args)
     {
-        Debug.Log("Qiver.CreateAndSelectArrow");
-        Arrow arrow = CreateArrow(args.interactorObject.transform);
-        interactionManager.SelectEnter(args.interactorObject, arrow);
-        GameManager.instance.NewArrow(arrow);
+        if (GameManager.instance.PuedeSeguirJugando())
+        {
+            Debug.Log("Qiver.CreateAndSelectArrow");
+            Arrow arrow = CreateArrow(args.interactorObject.transform);
+            interactionManager.SelectEnter(args.interactorObject, arrow);
+            GameManager.instance.NewArrow(arrow);
+        }
     }
 
     private Arrow CreateArrow(Transform arrowPositionAndOrientation)
