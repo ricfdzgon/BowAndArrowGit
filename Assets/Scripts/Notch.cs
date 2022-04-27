@@ -41,7 +41,12 @@ public class Notch : XRSocketInteractor
     {
         // Only release if the target is an arrow using custom deselect
         if (selectTarget is Arrow && PullMeasurer.PullAmount > releaseThreshold)
-            CustomManager.ForceDeselect(this);
+            ForceDeselect();
+    }
+
+    public void ForceDeselect()
+    {
+        CustomManager.ForceDeselect(this);
     }
 
     public void MoveAttach(Vector3 pullPosition, float pullAmount)

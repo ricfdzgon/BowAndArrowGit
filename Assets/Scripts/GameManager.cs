@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Marcador marcador;
     private int numeroFrechasLanzadas;
     private int puntuacionUltimo = 0, puntuacionTotal = 0;
+    public Bow bow;
     // Start is called before the first frame update
     private List<Arrow> flechasCreadas = new List<Arrow>();
     void Awake()
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager.Start marcador está sen establecer");
         numeroFrechasLanzadas = 0;
+
     }
 
     // Update is called once per frame
@@ -64,5 +66,10 @@ public class GameManager : MonoBehaviour
     public bool PuedeSeguirJugando()
     {
         return numeroFrechasLanzadas < 10;
+    }
+
+    public void ReestablecerArco()
+    {
+        bow.ReestablecerPosicion();
     }
 }

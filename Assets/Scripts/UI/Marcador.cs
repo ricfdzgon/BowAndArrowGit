@@ -47,5 +47,9 @@ public class Marcador : MonoBehaviour
     {
         GameManager.instance.Reiniciar();
     }
+    public void ButtonReestablecer()
+    {   
+        GameManager.instance.ReestablecerArco();
+    }
 
 }

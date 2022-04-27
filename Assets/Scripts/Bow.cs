@@ -5,13 +5,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Bow : XRGrabInteractable
 {
-
+    private Vector3 startPosition;
+    private Quaternion startRotation;
     private Notch notch = null;
 
     protected override void Awake()
     {
         base.Awake();
         notch = GetComponentInChildren<Notch>();
+        startPosition = transform.position;
+        startRotation = transform.rotation;
     }
 
     protected override void OnEnable()
@@ -28,5 +31,11 @@ public class Bow : XRGrabInteractable
         base.OnDisable();
         selectEntered.RemoveListener(notch.SetReady);
         selectExited.RemoveListener(notch.SetReady);
+    }
+    public void ReestablecerPosicion()
+    {
+        transform.position = startPosition;
+        transform.rotation = startRotation;
+        notch.ForceDeselect();
     }
 }
