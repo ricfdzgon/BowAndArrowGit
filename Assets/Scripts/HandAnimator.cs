@@ -43,7 +43,16 @@ public class HandAnimator : MonoBehaviour
             if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue))
             {
                 //Isto execútase se o valor se leu correctamente. Usamos gripValue no animador
-                animator.SetFloat("Grip", gripValue);
+                if (controllerCharacteristics == InputDeviceCharacteristics.Left)
+                {
+                    animator.SetFloat("Grip", gripValue);
+                }
+                else
+                {
+                    animator.SetFloat("Pitch", Mathf.Clamp(gripValue, 0, 0.8f));
+                    animator.SetFloat("Grip", Mathf.Lerp(0, 0.16f, gripValue));
+
+                }
             }
             else
             {
