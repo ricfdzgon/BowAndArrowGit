@@ -13,7 +13,8 @@ public class Target : MonoBehaviour, IArrowHittable
 
     //Ancho das zonas concentricas que valen entre 1 e 9 puntos 
     private float anchoZona;
-
+    public GameObject impactDiscRed;
+    public GameObject impactDiscYellow;
     void Start()
     {
         anchoZona = (radioExterior - radioDivisionCentral) / 9;
@@ -22,7 +23,7 @@ public class Target : MonoBehaviour, IArrowHittable
     {
         float distanciaImpacto = (hit.point - transform.position).magnitude;
         int points = 0;
-
+        GameObject disco;
         if (distanciaImpacto > radioExterior)
         {
             points = 0;
@@ -39,6 +40,16 @@ public class Target : MonoBehaviour, IArrowHittable
                 points = 9 - Mathf.FloorToInt(zona);
             }
         }
+
+        if (points == 7 || points == 8)
+        {
+            disco = Instantiate(impactDiscYellow, hit.point, Quaternion.LookRotation(transform.up, Vector3.up));
+        }
+        else
+        {
+            disco = Instantiate(impactDiscRed, hit.point, Quaternion.LookRotation(transform.up, Vector3.up));
+        }
+        GameManager.instance.NewHitMarker(disco);
         GameManager.instance.AnotarPuntos(points);
     }
 
@@ -53,4 +64,5 @@ public class Target : MonoBehaviour, IArrowHittable
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddForce(direction * forceAmount);
     }
+
 }

@@ -4919,6 +4919,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Diana
       objectReference: {fileID: 0}
+    - target: {fileID: 7146074466939677844, guid: 0546818136100be43b28edb71e0754ad, type: 3}
+      propertyPath: impactDiscRed
+      value: 
+      objectReference: {fileID: 5250249647471536574, guid: 1534cc40a58541f4ab9e43af79f23347, type: 3}
+    - target: {fileID: 7146074466939677844, guid: 0546818136100be43b28edb71e0754ad, type: 3}
+      propertyPath: impactDiscYellow
+      value: 
+      objectReference: {fileID: 5250249647471536574, guid: 2353274c65a93c547a6c2a2713f37133, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0546818136100be43b28edb71e0754ad, type: 3}
 --- !u!1 &1852265330

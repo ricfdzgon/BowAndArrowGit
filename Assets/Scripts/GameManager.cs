@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Bow bow;
     // Start is called before the first frame update
     private List<Arrow> flechasCreadas = new List<Arrow>();
+    private List<GameObject> marcadoresHit = new List<GameObject>();
     void Awake()
     {
         instance = this;
@@ -56,11 +57,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(arrow.gameObject, 0);
         }
-        flechasCreadas.Clear();
+        //podriamos cambiar la lista de flechasCreadas a GameObjects asi no tendriamos que usar dos listas
+        foreach (GameObject hit in marcadoresHit)
+        {
+            Destroy(hit, 0);
+        }
+        marcadoresHit.Clear();
     }
     public void NewArrow(Arrow arrow)
     {
         flechasCreadas.Add(arrow);
+        Debug.Log("Flechas creadas totales = " + flechasCreadas.Count);
+    }
+    public void NewHitMarker(GameObject hit)
+    {
+        marcadoresHit.Add(hit);
         Debug.Log("Flechas creadas totales = " + flechasCreadas.Count);
     }
     public bool PuedeSeguirJugando()
