@@ -30,7 +30,7 @@ public class HandAnimator : MonoBehaviour
 
         //Antes de mirar el valor del botón de grip, tengo que mirar si targetDevice fue
         //inicializado correctamente
-        if (targetDevice != null)
+        if (targetDevice != null && targetDevice.isValid)
         {
             //targetDevice está inicalizado, leemos el valor del mando de grip
 
